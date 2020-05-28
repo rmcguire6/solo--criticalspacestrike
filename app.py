@@ -42,13 +42,26 @@ def db_seed():
 def hello_players():
     return jsonify(message='Hello Players'),200
 
-    
+
 @app.route('/scores', methods=['GET'])
 def scores():
     scores_list = Score.query.all()
     result = scores_schema.dump(scores_list)
     return jsonify(result)
-    
+
+
+@app.route('/add_score', methods=['POST'])
+def add_score():
+    score = request.form['score']
+    if score:
+        new_score = Score(score=score)
+        db.session.add(new_score)
+        db.session.commit()
+        return jsonify(message='Score added to database'), 201
+    else:
+        return jsonify(message='Error adding score'), 400
+
+
 # database models
 
 
