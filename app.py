@@ -1,6 +1,7 @@
 from flask import Flask, jsonify, request
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import Column, Integer
+from flask_marshmallow import Marshmallow
 import os
 
 app = Flask(__name__)
@@ -8,6 +9,8 @@ basedir = os.path.abspath(os.path.dirname(__file__))
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(basedir, 'scores.db')
 
 db = SQLAlchemy(app)
+ma = Marshmallow(app)
+
 
 @app.cli.command('db_create')
 def db_create():
@@ -39,6 +42,12 @@ def db_seed():
 def hello_players():
     return jsonify(message='Hello Players'),200
 
+    
+@app.route('/scores', methods=['GET'])
+def scores():
+    scores_list = Score.query.all()
+    result = scores_schema.dump(scores_list)
+    return jsonify(result)
     
 # database models
 
