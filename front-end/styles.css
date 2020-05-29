@@ -1,0 +1,36 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+.container {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    background-image: url('./images/jeremy-thomas-4dpAqfTbvKA-unsplash.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.title {
+    font-size: 1.5em;
+    color: #fff;
+}
+.info {
+    color: #fff;
+}
+.buttons {
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    right: 40%
+
+}
+.button {
+    color: #fff;
+    font-size: 1.5em;
+    background-color: transparent;
+    min-width: 1rem;
+    padding: .5rem;
+    margin: 1rem;
+}
