@@ -5,7 +5,7 @@
         <title>Critical Space Strike</title>
         <link rel="stylesheet" href="styles.css"
     </head>
-    <body>
+    <body onload="draw()">
         <div class="container">
         <header class="title">
             <h1>Critical Space Strike</h1>
@@ -16,8 +16,10 @@
                 <button class="button">New Game</button>
                 <h1 class="title">0000</h1>
             </div>
-            <div class="screen">
-            <canvas></canvas>
+           
+               
+            <canvas id="screen" width="950px" height="650px">
+            </canvas>
             </div>
             <nav class="buttons">
                 <button class="button">left</button>
@@ -27,6 +29,6 @@
             </nav>
         </main>
     </div>
-        <script src="scripts.js"></script>
+        <script src="./scripts.js"></script>
     </body>
 </html>

@@ -9,14 +9,11 @@
     flex-direction: column;
     height: 100vh;
     background-image: url('./images/jeremy-thomas-4dpAqfTbvKA-unsplash.jpg');
-    background-size: cover;
-    background-repeat: no-repeat;
+    background-size: cover; 
+    background-repeat: no-repeat; 
 }
 .title {
     font-size: 1.5em;
-    color: #fff;
-}
-.info {
     color: #fff;
 }
 .buttons {
@@ -33,4 +30,10 @@
     min-width: 1rem;
     padding: .5rem;
     margin: 1rem;
+}
+#screen {
+    border: 2px solid #fff;
+}
+.spaceship {
+    background-image: url('./images/spaceship.png');
 }
