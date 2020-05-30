@@ -3,14 +3,21 @@
     margin: 0;
     padding: 0;
 }
+body {
+  background-image: url('./images/jeremy-thomas-4dpAqfTbvKA-unsplash.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+}
 .container {
     text-align: center;
     display: flex;
     flex-direction: column;
     height: 100vh;
+    /* -- Moved background image to body
     background-image: url('./images/jeremy-thomas-4dpAqfTbvKA-unsplash.jpg');
-    background-size: cover; 
-    background-repeat: no-repeat; 
+    background-size: cover;
+    background-repeat: no-repeat;
+    */
 }
 .title {
     font-size: 1.5em;
@@ -20,7 +27,11 @@
     text-align: center;
     position: fixed;
     bottom: 0;
-    right: 40%
+    /*  added flex to the directional buttons */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
 
 }
 .button {
