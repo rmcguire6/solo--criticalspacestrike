@@ -3,39 +3,56 @@
     margin: 0;
     padding: 0;
 }
+body {
+    background-image: url('./images/jeremy-thomas-4dpAqfTbvKA-unsplash.jpg');
+    background-size: cover; 
+    background-repeat: no-repeat; 
+}
 .container {
     color: #fff;
     text-align: center;
     display: flex;
     flex-direction: column;
     height: 100vh;
-    background-image: url('./images/jeremy-thomas-4dpAqfTbvKA-unsplash.jpg');
-    background-size: cover; 
-    background-repeat: no-repeat; 
+    
 }
 .title {
     padding-top: .5em;
     font-size: 1.5em;
 }
-.score {
-    font-size: 3em;
-}
-.buttons {
+.info {
     display: flex;
-    text-align: center;
     align-items: center;
     justify-content: center;
-    width: 100vw;
+}
+.info--score {
+    font-size: 2.5em;
+    padding: .5em;
+    margin: 0 1rem;
 
 }
+.info__symbols {
+    display: flex;
+    list-style: none;
+    margin: .5rem;
+}
+.info__symbols--item{
+    padding: .5rem;
+    font-size: 3em;
+
+}
+
 .button {
     color: #fff;
     font-size: 1.5em;
     font-weight: bold;
     background-color: rgba(66, 78, 126, .5);
     min-width: 1rem;
-    padding: .5rem;
     margin: 1rem;
+    padding: .25rem;
+}
+.button--info {
+    background-color: rgba(66,78,176, .3)
 }
 #screen {
     border: 2px solid #fff;
