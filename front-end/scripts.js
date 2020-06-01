@@ -13,7 +13,6 @@ function draw_ship(spacing_x, spacing_y){
     ship_image.onload = () => {
         ctx.drawImage(ship_image, x, y, w, h);
     }
-
 }
 
 function draw() {
