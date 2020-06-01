@@ -1,4 +1,8 @@
 // ---- create a reusable image tile:
+function start_game () {
+    console.log('game started')
+}
+
 function draw_ship(spacing_x, spacing_y){
     my_canvas = document.getElementById("screen")
     ctx = my_canvas.getContext("2d")
