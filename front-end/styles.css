@@ -13,8 +13,6 @@ body {
     text-align: center;
     display: flex;
     flex-direction: column;
-    height: 100vh;
-    
 }
 .title {
     padding-top: .5em;
@@ -40,6 +38,12 @@ body {
     padding: .5rem;
     font-size: 3em;
 
+}
+.buttons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
 }
 
 .button {
