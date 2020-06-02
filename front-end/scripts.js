@@ -1,6 +1,13 @@
 // ---- create a reusable image tile:
 function start_game () {
     console.log('game started')
+    let score = 0
+    let lives = 3
+    move_enemies()
+}
+
+function move_enemies () {
+    console.log('enemies are moving')
 }
 
 function draw_ship(spacing_x, spacing_y){
