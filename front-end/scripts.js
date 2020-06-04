@@ -1,6 +1,7 @@
 const canvas = document.getElementById('screen')
+canvas.width = 1820
+canvas.height = 700
 const ctx = canvas.getContext('2d')
-
 
 function start_game () {
     console.log('game started')
