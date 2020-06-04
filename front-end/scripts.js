@@ -1,4 +1,7 @@
-// ---- create a reusable image tile:
+const canvas = document.getElementById('screen')
+const ctx = canvas.getContext('2d')
+
+
 function start_game () {
     console.log('game started')
     let score = 0
@@ -9,10 +12,8 @@ function start_game () {
 function move_enemies () {
     console.log('enemies are moving')
 }
-
+// ---- create a reusable image tile:
 function draw_ship(spacing_x, spacing_y){
-    my_canvas = document.getElementById("screen")
-    ctx = my_canvas.getContext("2d")
     ship_image = new Image()
     ship_image.src = 'images/spaceship.png'
     let start_x = 0
@@ -27,17 +28,18 @@ function draw_ship(spacing_x, spacing_y){
 }
 
 function draw() {
-    let ctx = document.getElementById('screen').getContext('2d')
-    var tile_width = 100
-    var tile_height = 100
-    var x_spacing = tile_width
-    var y_spacing = tile_height
-
-    for (var i = 0; i < 3; i++) {
+    let tile_width = 100
+    let tile_height = 100
+    let x_spacing = tile_width
+    let y_spacing = tile_height
+    function drawRow(){
         for (var j = 0; j < 8; j++) {
           draw_ship(x_spacing, y_spacing)
           x_spacing += tile_width * 2
         }
+    }
+    for (var i = 0; i < 3; i++) {
+        drawRow(tile_width)
         x_spacing = tile_width
         y_spacing += tile_height + 30
       }
@@ -45,6 +47,5 @@ function draw() {
     }
 
 window.addEventListener('load', (event) => {
-
     draw();
 });
