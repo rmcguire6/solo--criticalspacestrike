@@ -22,23 +22,19 @@ function Ship (spacing_x, spacing_y, width, height) {
 }
 
 function draw() {
-    let tile_width = 100
-    let tile_height = 100
-    let x_spacing = tile_width
-    let y_spacing = tile_height
-    function drawRow(){
+    const tile_width = 100
+    const tile_height = 100
+
+    function drawRow(row_position){
         for (var j = 0; j < 8; j++) {
-          Ship(x_spacing, y_spacing, tile_width, tile_height)
-          x_spacing += tile_width * 2
+            Ship((canvas.width / 8) * j + (tile_width / 2), (canvas.height/5) * row_position + (tile_height / 2), tile_width, tile_height)
         }
     }
     for (var i = 0; i < 3; i++) {
-        drawRow(tile_width)
-        x_spacing = tile_width
-        y_spacing += tile_height + 30
-      }
-      Ship( tile_width * 8, tile_height * 5, tile_width, tile_height)
+        drawRow(i) 
     }
+        Ship( (canvas.width / 2) - (tile_width / 2), canvas.height - (tile_height * 1.5),tile_width, tile_height)
+}
 
 window.addEventListener('load', (event) => {
     draw();
