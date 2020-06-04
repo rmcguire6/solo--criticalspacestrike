@@ -13,18 +13,11 @@ function start_game () {
 function move_enemies () {
     console.log('enemies are moving')
 }
-// ---- create a reusable image tile:
-function draw_ship(spacing_x, spacing_y){
+function Ship (spacing_x, spacing_y, width, height) {
     ship_image = new Image()
     ship_image.src = 'images/spaceship.png'
-    let start_x = 0
-    let start_y = 0
-    let x = start_x + spacing_x
-    let y = start_y + spacing_y
-    let w = 100
-    let h = 90
     ship_image.onload = () => {
-        ctx.drawImage(ship_image, x, y, w, h);
+        ctx.drawImage(ship_image, spacing_x, spacing_y, width, height);
     }
 }
 
@@ -35,7 +28,7 @@ function draw() {
     let y_spacing = tile_height
     function drawRow(){
         for (var j = 0; j < 8; j++) {
-          draw_ship(x_spacing, y_spacing)
+          Ship(x_spacing, y_spacing, tile_width, tile_height)
           x_spacing += tile_width * 2
         }
     }
@@ -44,7 +37,7 @@ function draw() {
         x_spacing = tile_width
         y_spacing += tile_height + 30
       }
-      draw_ship( tile_width * 8, tile_height * 5)
+      Ship( tile_width * 8, tile_height * 5, tile_width, tile_height)
     }
 
 window.addEventListener('load', (event) => {
