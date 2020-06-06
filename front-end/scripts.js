@@ -9,13 +9,9 @@ const half_tile = 50
 function start_game () {
     console.log('game started')
     let score = 0
-    let lives = 3
-    move_enemies()
+    let lives = 3   
 }
 
-function move_enemies () {
-    console.log('enemies are moving')
-}
 function Ship (spacing_x, spacing_y) {
     ship_image = new Image()
     ship_image.src = 'images/spaceship.png'
@@ -40,7 +36,10 @@ function draw() {
     draw_row(2, half_tile)
     draw_player((canvas.width / 2 - half_tile), canvas.height - 1.5 * tile_height)
 }
-
+function run_game() {
+    start_game()
+    draw()
+}
 window.addEventListener('load', (event) => {
-    draw();
+    run_game();
 });
