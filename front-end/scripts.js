@@ -2,6 +2,9 @@ const canvas = document.getElementById('screen')
 canvas.width = 1820
 canvas.height = 700
 const ctx = canvas.getContext('2d')
+const tile_width = 100
+const tile_height = 100
+
 
 function start_game () {
     console.log('game started')
@@ -22,9 +25,6 @@ function Ship (spacing_x, spacing_y, width, height) {
 }
 
 function draw() {
-    const tile_width = 100
-    const tile_height = 100
-
     function drawRow(row_position){
         for (var j = 0; j < 8; j++) {
             Ship((canvas.width / 8) * j + (tile_width / 2), (canvas.height/5) * row_position + (tile_height / 2), tile_width, tile_height)
