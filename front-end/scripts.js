@@ -5,8 +5,8 @@ const ctx = canvas.getContext('2d')
 const tile_width = 100
 const tile_height = 100
 const half_tile = 50
-
-
+const player_y = canvas.height - 1.5 * tile_height
+let player_x
 
 function Ship (spacing_x, spacing_y) {
     ship_image = new Image()
@@ -22,8 +22,8 @@ function draw_row(row_position, offset){
     }
 }
 
-function draw_player(player_x,player_y){
-    Ship(player_x, player_y)
+function draw_player(x){
+    Ship(x, player_y)
 }
 
 function draw_enemies() {
@@ -34,10 +34,12 @@ function draw_enemies() {
 function start_game () {
     console.log('game started')
     let score = 0
-    let lives = 3   
-    draw_player((canvas.width / 2 - half_tile), canvas.height - 1.5 * tile_height)
+    let lives = 3
+    let player_x = canvas.width / 2 - half_tile
+    draw_player(player_x)
     draw_enemies()
 }
+
 function run_game() {
     start_game()
 }
