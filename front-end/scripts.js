@@ -6,11 +6,7 @@ const tile_width = 100
 const tile_height = 100
 const half_tile = 50
 
-function start_game () {
-    console.log('game started')
-    let score = 0
-    let lives = 3   
-}
+
 
 function Ship (spacing_x, spacing_y) {
     ship_image = new Image()
@@ -30,15 +26,20 @@ function draw_player(player_x,player_y){
     Ship(player_x, player_y)
 }
 
-function draw() {
+function draw_enemies() {
     draw_row(0, tile_width)
     draw_row(1, -half_tile) 
     draw_row(2, half_tile)
+}
+function start_game () {
+    console.log('game started')
+    let score = 0
+    let lives = 3   
     draw_player((canvas.width / 2 - half_tile), canvas.height - 1.5 * tile_height)
+    draw_enemies()
 }
 function run_game() {
     start_game()
-    draw()
 }
 window.addEventListener('load', (event) => {
     run_game();
