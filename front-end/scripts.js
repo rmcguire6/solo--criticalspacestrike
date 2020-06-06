@@ -8,15 +8,16 @@ const half_tile = 50
 const player_y = canvas.height - 1.5 * tile_height
 const player_dx = 25
 const min_left = tile_width
-const max_right = canvas.width - tile_width
+const max_right = canvas.width -  2 * tile_width
 const enemy_width = canvas.width / 9
 const enemy_height = canvas.height / 4
 const row0_y = half_tile
 const row1_y = enemy_height + half_tile
 const row2_y = 2 * enemy_height + half_tile
+const row_dx = 20
 
 let player_x = canvas.width / 2 - half_tile
-let row_x = [min_left, 2 * tile_width, min_left + half_tile]
+let row = [{x:min_left, y: half_tile, direction: 1}, {x: 2 * tile_width, y: enemy_height + half_tile, direction: -1},{x: min_left + half_tile,y: 2 * enemy_height + half_tile ,direction: 1}]
 
 function Ship (spacing_x, spacing_y) {
     ship_image = new Image()
@@ -41,9 +42,9 @@ function draw_player(x){
 }
 
 function draw_enemies() {
-    draw_row(row_x[0],row0_y)
-    draw_row(row_x[1], row1_y)
-    draw_row(row_x[2],row2_y)
+    draw_row(row[0].x,row[0].y)
+    draw_row(row[1].x, row[1].y)
+    draw_row(row[2].x,row[2].y)
 }
 
 function start_game () {
@@ -62,11 +63,12 @@ function move_player_right () {
         }
     draw_player(player_x)
 }
+
 function move_player_left () {
     ctx.clearRect(0, player_y, canvas.width, canvas.height)
     player_x -=  player_dx
-    if (player_x < 0) {
-        player_x = 0
+    if (player_x < min_left) {
+        player_x = min_left
         }
     draw_player(player_x)
 }
@@ -74,6 +76,7 @@ function move_player_left () {
 function run_game() {
     start_game()
 }
+
 window.addEventListener('load', (event) => {
-    run_game();
-});
+    run_game()
+})
