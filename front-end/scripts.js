@@ -11,14 +11,12 @@ const min_left = tile_width
 const max_right = canvas.width - tile_width
 const enemy_width = canvas.width / 9
 const enemy_height = canvas.height / 4
-const row1_y = half_tile
-const row2_y = enemy_height + half_tile
-const row3_y = 2 * enemy_height + half_tile
+const row0_y = half_tile
+const row1_y = enemy_height + half_tile
+const row2_y = 2 * enemy_height + half_tile
 
 let player_x = canvas.width / 2 - half_tile
-let row1_x = min_left
-let row2_x = 2 * tile_width
-let row3_x = min_left + half_tile
+let row_x = [min_left, 2 * tile_width, min_left + half_tile]
 
 function Ship (spacing_x, spacing_y) {
     ship_image = new Image()
@@ -43,9 +41,9 @@ function draw_player(x){
 }
 
 function draw_enemies() {
-    draw_row(row1_x,row1_y)
-    draw_row(row2_x, row2_y)
-    draw_row(row3_x,row3_y)
+    draw_row(row_x[0],row0_y)
+    draw_row(row_x[1], row1_y)
+    draw_row(row_x[2],row2_y)
 }
 
 function start_game () {
