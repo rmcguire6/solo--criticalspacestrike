@@ -6,7 +6,6 @@ const tile_width = 100
 const tile_height = 100
 const half_tile = 50
 
-
 function start_game () {
     console.log('game started')
     let score = 0
@@ -25,15 +24,17 @@ function Ship (spacing_x, spacing_y) {
     }
 }
 
+function draw_row(row_position, offset){
+    for (var j = 0; j < 8; j++) {
+        Ship((canvas.width / 9) * j + tile_width + offset, (canvas.height/4) * row_position + half_tile)
+    }
+}
+
+function draw_player(player_x,player_y){
+    Ship(player_x, player_y)
+}
+
 function draw() {
-    function draw_row(row_position, offset){
-        for (var j = 0; j < 8; j++) {
-            Ship((canvas.width / 9) * j + tile_width + offset, (canvas.height/4) * row_position + half_tile)
-        }
-    }
-    function draw_player(player_x,player_y){
-        Ship(player_x, player_y)
-    }
     draw_row(0, tile_width)
     draw_row(1, -half_tile) 
     draw_row(2, half_tile)
