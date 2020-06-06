@@ -4,6 +4,7 @@ canvas.height = 700
 const ctx = canvas.getContext('2d')
 const tile_width = 100
 const tile_height = 100
+const half_tile = 50
 
 
 function start_game () {
@@ -25,15 +26,18 @@ function Ship (spacing_x, spacing_y) {
 }
 
 function draw() {
-    function drawRow(row_position){
+    function draw_row(row_position){
         for (var j = 0; j < 8; j++) {
-            Ship((canvas.width / 8) * j + (tile_width / 2), (canvas.height/5) * row_position + (tile_height / 2))
+            Ship((canvas.width / 9) * j + tile_width, (canvas.height/5) * row_position + (tile_height / 2))
         }
     }
-    for (var i = 0; i < 3; i++) {
-        drawRow(i) 
+    function draw_player(player_x,player_y){
+        Ship(player_x, player_y)
     }
-        Ship( (canvas.width / 2) - (tile_width / 2), canvas.height - (tile_height * 1.5))
+    for (var i = 0; i < 3; i++) {
+        draw_row(i) 
+    }
+    draw_player((canvas.width / 2 - half_tile), canvas.height - 2 * tile_height)
 }
 
 window.addEventListener('load', (event) => {
