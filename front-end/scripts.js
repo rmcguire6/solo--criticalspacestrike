@@ -16,24 +16,24 @@ function start_game () {
 function move_enemies () {
     console.log('enemies are moving')
 }
-function Ship (spacing_x, spacing_y, width, height) {
+function Ship (spacing_x, spacing_y) {
     ship_image = new Image()
     ship_image.src = 'images/spaceship.png'
     ship_image.onload = () => {
-        ctx.drawImage(ship_image, spacing_x, spacing_y, width, height);
+        ctx.drawImage(ship_image, spacing_x, spacing_y, tile_width, tile_height);
     }
 }
 
 function draw() {
     function drawRow(row_position){
         for (var j = 0; j < 8; j++) {
-            Ship((canvas.width / 8) * j + (tile_width / 2), (canvas.height/5) * row_position + (tile_height / 2), tile_width, tile_height)
+            Ship((canvas.width / 8) * j + (tile_width / 2), (canvas.height/5) * row_position + (tile_height / 2))
         }
     }
     for (var i = 0; i < 3; i++) {
         drawRow(i) 
     }
-        Ship( (canvas.width / 2) - (tile_width / 2), canvas.height - (tile_height * 1.5),tile_width, tile_height)
+        Ship( (canvas.width / 2) - (tile_width / 2), canvas.height - (tile_height * 1.5))
 }
 
 window.addEventListener('load', (event) => {
