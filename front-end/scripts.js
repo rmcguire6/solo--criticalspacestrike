@@ -6,7 +6,10 @@ const tile_width = 100
 const tile_height = 100
 const half_tile = 50
 const player_y = canvas.height - 1.5 * tile_height
-let player_x
+const player_dx = 25
+const max_right = canvas.width - tile_width
+
+let player_x = canvas.width / 2 - half_tile
 
 function Ship (spacing_x, spacing_y) {
     ship_image = new Image()
@@ -23,7 +26,11 @@ function draw_row(row_position, offset){
 }
 
 function draw_player(x){
-    Ship(x, player_y)
+    player = new Image()
+    player.src = 'images/spaceship.png'
+    player.onload = () => {
+        ctx.drawImage(player, x, player_y, tile_width, tile_height)
+    }
 }
 
 function draw_enemies() {
@@ -32,12 +39,29 @@ function draw_enemies() {
     draw_row(2, half_tile)
 }
 function start_game () {
-    console.log('game started')
     let score = 0
     let lives = 3
-    let player_x = canvas.width / 2 - half_tile
+    console.log('game started')
     draw_player(player_x)
     draw_enemies()
+}
+function move_player_right () {
+    ctx.clearRect(0, player_y, canvas.width, canvas.height)
+    player_x +=  player_dx
+    if (player_x > max_right) {
+        player_x = max_right
+        }
+    draw_player(player_x)
+    console.log('right button clicked')
+}
+function move_player_left () {
+    ctx.clearRect(0, player_y, canvas.width, canvas.height)
+    player_x -=  player_dx
+    if (player_x < 0) {
+        player_x = 0
+        }
+    draw_player(player_x)
+    console.log('left button clicked')
 }
 
 function run_game() {
