@@ -1,10 +1,11 @@
 const canvas = document.getElementById('screen')
-canvas.width = 1820
+canvas.width = 1900
 canvas.height = 700
 const ctx = canvas.getContext('2d')
 const tile_width = 100
 const tile_height = 100
 const half_tile = 50
+const quarter_tile = 25
 const player_y = canvas.height - 1.5 * tile_height
 const player_dx = 25
 const min_left = tile_width
@@ -12,6 +13,7 @@ const max_right = canvas.width -  2 * tile_width
 const enemy_width = canvas.width / 9
 const enemy_height = canvas.height / 5
 const row_dx = 20
+const row_width = 6 * enemy_width
 
 let player_x = canvas.width / 2 - half_tile
 let row = [{x:min_left, y: half_tile, direction: 1}, {x: 3 * tile_width, y: enemy_height + half_tile, direction: -1},{x: min_left + half_tile,y: 2 * enemy_height + half_tile ,direction: 1}]
@@ -38,18 +40,37 @@ function draw_player(x){
     }
 }
 
-function draw_enemies() {
-    for (let i=0; i < 3; i ++) {
-        draw_row(row[i].x, row[i].y)
-    }
-}
-
 function start_game () {
     let score = 0
     let lives = 3
     console.log('game started')
     draw_player(player_x)
-    draw_enemies()
+    animate_enemy()
+}
+
+function move_enemies () {
+    ctx.clearRect(0, 0, canvas.width, enemy_height + half_tile)
+    ctx.clearRect(0, enemy_height + half_tile, canvas.width, enemy_height)
+    ctx.clearRect(0, 2 * enemy_height + quarter_tile, canvas.width, 2.3 * tile_height)
+    for (let i=0; i < 3; i ++) {
+        row[i].x +=  row_dx * row[i].direction
+        if (row[i].direction < 0) {
+            if (row[i].x < min_left) {
+                row[i].x = min_left
+                row[i].direction = 1
+            }
+        } else {
+            if (row[i].x + row_width > max_right) {
+                row[i].x = max_right - row_width
+                row[i].direction = -1
+            }
+        }
+        draw_row(row[i].x, row[i].y)
+    }
+}
+
+function animate_enemy() {
+    setInterval(move_enemies,600)
 }
 
 function move_player_right () {
@@ -72,3 +93,4 @@ function move_player_left () {
 window.addEventListener('load', (event) => {
     start_game()
 })
+
