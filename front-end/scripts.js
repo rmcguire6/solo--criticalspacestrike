@@ -6,12 +6,12 @@ const tile_width = 100
 const tile_height = 100
 const half_tile = 50
 const quarter_tile = 25
-const player_y = canvas.height - 1.5 * tile_height
+const player_y = canvas.height - tile_height - half_tile -16
 const player_dx = 25
 const min_left = tile_width
 const max_right = canvas.width -  2 * tile_width
-const enemy_width = canvas.width / 9
-const enemy_height = canvas.height / 5
+const enemy_width = Math.floor(canvas.width / 9)
+const enemy_height = Math.floor(canvas.height / 5)
 const row_dx = 20
 const row_width = 6 * enemy_width
 
@@ -51,7 +51,7 @@ function start_game () {
 function move_enemies () {
     ctx.clearRect(0, 0, canvas.width, enemy_height + half_tile)
     ctx.clearRect(0, enemy_height + half_tile, canvas.width, enemy_height)
-    ctx.clearRect(0, 2 * enemy_height + quarter_tile, canvas.width, 2.3 * tile_height)
+    ctx.clearRect(0, 2 * enemy_height + quarter_tile, canvas.width, Math.floor(2.3 * tile_height))
     for (let i=0; i < 3; i ++) {
         row[i].x +=  row_dx * row[i].direction
         if (row[i].direction < 0) {
@@ -89,7 +89,11 @@ function move_player_left () {
         }
     draw_player(player_x)
 }
-
+function shoot_laser () {
+        ctx.clearRect(player_x  + 43, 0, 10, player_y)
+        ctx.fillStyle = '#ffff00'
+        ctx.fillRect(player_x + 43, 0, 10, player_y)
+}
 window.addEventListener('load', (event) => {
     start_game()
 })
