@@ -28,13 +28,24 @@ function Ship (spacing_x, spacing_y) {
         ctx.drawImage(ship_image, spacing_x, spacing_y, tile_width, tile_height);
     }
 }
-
+function initialize_enemies(){
+    let new_x = -1
+    for (let i=0; i < 3; i ++) {
+        for (let j = 0; j < num_ships; j++) {
+            new_x = enemy_width * j + row[i].x
+            ships[i][j] = true
+            console.log('initial ', ships[i][j])
+            Ship(new_x, row[i].y)
+        }
+    }
+}
 function draw_row(row_x, row_y, row_number){
     let new_x = -1
     for (let j = 0; j < num_ships; j++) {
         new_x = enemy_width * j + row_x
-        ships[row_number][j] = true
-        Ship(new_x, row_y)
+        if (ships[row_number][j]) {
+            Ship(new_x, row_y)
+        }
     }
 }
 
@@ -49,6 +60,7 @@ function draw_player(x){
 function start_game () {
     console.log('game started')
     draw_player(player_x)
+    initialize_enemies()
     animate_enemy()
 }
 
@@ -105,7 +117,6 @@ function how_many_ships_hit(){
             ship_right = ship_left + tile_width
             if ((ship_left <= laser_right  & laser_right <= ship_right) || (ship_left <= laser_left & laser_left <= ship_right)) {
                 ships[k][j] = false
-                console.log('hit ship row ', k + 1, 'ship ', j + 1, 'value', ships[k][j])
                 ship_hit += 1
             }
         }
