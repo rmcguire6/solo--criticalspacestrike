@@ -14,9 +14,9 @@ const enemy_width = Math.floor(canvas.width / 9)
 const enemy_height = Math.floor(canvas.height / 5)
 const row_dx = 20
 const row_width = 6 * enemy_width
-
 let player_x = canvas.width / 2 - half_tile
 let row = [{x:min_left, y: half_tile, direction: 1}, {x: 3 * tile_width, y: enemy_height + half_tile, direction: -1},{x: min_left + half_tile,y: 2 * enemy_height + half_tile ,direction: 1}]
+let ships = [[],[],[]]
 
 function Ship (spacing_x, spacing_y) {
     ship_image = new Image()
@@ -26,9 +26,12 @@ function Ship (spacing_x, spacing_y) {
     }
 }
 
-function draw_row(row_x, row_y){
+function draw_row(row_x, row_y, row_number){
+    let new_x = -1
     for (let j = 0; j < 7; j++) {
-        Ship(enemy_width * j + row_x, row_y)
+        new_x = enemy_width * j + row_x
+        ships[row_number][j] = true
+        Ship(new_x, row_y)
     }
 }
 
@@ -45,7 +48,7 @@ function start_game () {
     let lives = 3
     console.log('game started')
     draw_player(player_x)
-    animate_enemy()
+    move_enemies()
 }
 
 function move_enemies () {
@@ -65,7 +68,7 @@ function move_enemies () {
                 row[i].direction = -1
             }
         }
-        draw_row(row[i].x, row[i].y)
+        draw_row(row[i].x, row[i].y, i)
     }
 }
 
@@ -89,10 +92,11 @@ function move_player_left () {
         }
     draw_player(player_x)
 }
+
 function shoot_laser () {
-        ctx.clearRect(player_x  + 43, 0, 10, player_y)
-        ctx.fillStyle = '#ffff00'
-        ctx.fillRect(player_x + 43, 0, 10, player_y)
+    ctx.clearRect(player_x  + 43, 0, 10, player_y)
+    ctx.fillStyle = '#ffff00'
+    ctx.fillRect(player_x + 43, 0, 10, player_y)
 }
 window.addEventListener('load', (event) => {
     start_game()
