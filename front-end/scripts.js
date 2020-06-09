@@ -7,7 +7,7 @@ const tile_height = 100
 const half_tile = 50
 const quarter_tile = 25
 const player_y = canvas.height - tile_height - half_tile -16
-const player_dx = 25
+const player_dx = 50
 const min_left = tile_width
 const max_right = canvas.width -  2 * tile_width
 const enemy_width = Math.floor(canvas.width / 9)
@@ -74,7 +74,7 @@ function move_enemies () {
 }
 
 function animate_enemy() {
-    setInterval(move_enemies,600)
+    setInterval(move_enemies,300)
 }
 
 function move_player_right () {
