@@ -116,8 +116,10 @@ function how_many_ships_hit(){
             ship_left = enemy_width * j + row[k].x
             ship_right = ship_left + tile_width
             if ((ship_left <= laser_right  & laser_right <= ship_right) || (ship_left <= laser_left & laser_left <= ship_right)) {
+                if (ships[k][j]) {
                 ships[k][j] = false
                 ship_hit += 1
+                }
             }
         }
     }
