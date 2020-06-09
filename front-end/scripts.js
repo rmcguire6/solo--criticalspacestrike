@@ -17,6 +17,7 @@ const row_width = 6 * enemy_width
 let player_x = canvas.width / 2 - half_tile
 let row = [{x:min_left, y: half_tile, direction: 1}, {x: 3 * tile_width, y: enemy_height + half_tile, direction: -1},{x: min_left + half_tile,y: 2 * enemy_height + half_tile ,direction: 1}]
 let ships = [[],[],[]]
+let score = 0
 
 function Ship (spacing_x, spacing_y) {
     ship_image = new Image()
@@ -44,11 +45,9 @@ function draw_player(x){
 }
 
 function start_game () {
-    let score = 0
-    let lives = 3
     console.log('game started')
     draw_player(player_x)
-    move_enemies()
+    animate_enemy()
 }
 
 function move_enemies () {
@@ -92,12 +91,36 @@ function move_player_left () {
         }
     draw_player(player_x)
 }
+function how_many_ships_hit(){
+    let ship_hit = 0
+    let ship_left = -1
+    let ship_right = canvas.width + 10
+    let laser_left = player_x + 43
+    let laser_right = laser_left + 10
+    for (let k = 2; k > -1; k--) {
+        for (let j = 0; j < 7; j++) {
+            ship_left = enemy_width * j + row[k].x
+            ship_right = ship_left + tile_width
+            if ((ship_left <= laser_right  & laser_right <= ship_right) || (ship_left <= laser_left & laser_left <= ship_right)) {
+                console.log('hit')
+                ships[k][j] = false
+                ship_hit += 1
+                console.log('laser from ',laser_left, laser_right, 'ship from ', ship_left, ship_right, 'hits', ship_hit)
+            }
+        }
+    }
+    return ship_hit
+}
 
 function shoot_laser () {
     ctx.clearRect(player_x  + 43, 0, 10, player_y)
     ctx.fillStyle = '#ffff00'
     ctx.fillRect(player_x + 43, 0, 10, player_y)
+    let hits = how_many_ships_hit()
+    score = hits * 200 + score
+    document.getElementById('score').innerHTML = score
 }
+
 window.addEventListener('load', (event) => {
     start_game()
 })
