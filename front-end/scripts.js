@@ -51,7 +51,7 @@ function draw_row(row_x, row_y, row_number){
 
 function draw_player(x){
     player = new Image()
-    player.src = 'images/spaceship.png'
+    player.src = 'images/rocket.png'
     player.onload = () => {
         ctx.drawImage(player, x, player_y, tile_width, tile_height)
     }
@@ -86,7 +86,7 @@ function move_enemies () {
 }
 
 function animate_enemy() {
-    setInterval(move_enemies,300)
+    setInterval(move_enemies,150)
 }
 
 function move_player_right () {
