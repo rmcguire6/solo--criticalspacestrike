@@ -7,7 +7,10 @@
         <!-- adding link for javascript to test(nellie)-->
         <script type="text/javascript" src="scripts.js"></script>
     </head>
+<<<<<<< Updated upstream
     <!-- removing for test: <body onload="draw()">-->
+=======
+>>>>>>> Stashed changes
     <body>
         <div class="container">
         <header class="title">
@@ -16,14 +19,20 @@
         </header>
         <main>
             <div class="info">
-                <button class="button">New Game</button>
-                <h1 class="title">0000</h1>
+                <ul class="info__symbols">
+                    <li class="info__symbols--item">&#9786</li>
+                    <li class="info__symbols--item">&#9786</li>
+                    <li class="info__symbols--item">&#9786</li>
+                </ul>
+                <div id="score">0000</div>
+                <ul class="info__symbols">
+                    <li class="info__symbols--item">&#9786</li>
+                    <li class="info__symbols--item">&#9786</li>
+                    <li class="info__symbols--item">&#9786</li>
+                </ul>
             </div>
-
-
-            <canvas id="screen" width="950px" height="650px">
+            <canvas id="screen">
             </canvas>
-            </div>
             <nav class="buttons">
                 <button class="button">left</button>
                 <button class="button">up</button>
@@ -31,7 +40,7 @@
                 <button class="button" >right</button>
             </nav>
         </main>
-    </div>
-        <script src="./scripts.js"></script>
+        </div>
+        <script src="scripts.js"></script>
     </body>
 </html>

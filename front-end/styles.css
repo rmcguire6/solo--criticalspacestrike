@@ -12,22 +12,50 @@ body {
     text-align: center;
     display: flex;
     flex-direction: column;
+<<<<<<< Updated upstream
     height: 100vh;
     /* -- Moved background image to body
     background-image: url('./images/jeremy-thomas-4dpAqfTbvKA-unsplash.jpg');
     background-size: cover;
     background-repeat: no-repeat;
     */
+=======
+>>>>>>> Stashed changes
 }
 .title {
     font-size: 1.5em;
     color: #fff;
 }
+<<<<<<< Updated upstream
 .buttons {
     text-align: center;
     position: fixed;
     bottom: 0;
     /*  added flex to the directional buttons */
+=======
+.info {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#score {
+    font-size: 2.5em;
+    padding: .5em;
+    margin: 0 1rem;
+
+}
+.info__symbols {
+    display: flex;
+    list-style: none;
+    margin: .5rem;
+}
+.info__symbols--item{
+    padding: .5rem;
+    font-size: 3em;
+
+}
+.buttons {
+>>>>>>> Stashed changes
     display: flex;
     justify-content: center;
     align-items: center;
@@ -41,10 +69,4 @@ body {
     min-width: 1rem;
     padding: .5rem;
     margin: 1rem;
-}
-#screen {
-    border: 2px solid #fff;
-}
-.spaceship {
-    background-image: url('./images/spaceship.png');
 }
