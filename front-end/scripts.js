@@ -13,7 +13,9 @@ const max_right = canvas.width -  2 * tile_width
 const enemy_width = Math.floor(canvas.width / 9)
 const enemy_height = Math.floor(canvas.height / 5)
 const row_dx = 20
-const row_width = 6 * enemy_width
+const num_ships = 7
+const row_width = (num_ships - 1) * enemy_width
+
 let player_x = canvas.width / 2 - half_tile
 let row = [{x:min_left, y: half_tile, direction: 1}, {x: 3 * tile_width, y: enemy_height + half_tile, direction: -1},{x: min_left + half_tile,y: 2 * enemy_height + half_tile ,direction: 1}]
 let ships = [[],[],[]]
@@ -29,7 +31,7 @@ function Ship (spacing_x, spacing_y) {
 
 function draw_row(row_x, row_y, row_number){
     let new_x = -1
-    for (let j = 0; j < 7; j++) {
+    for (let j = 0; j < num_ships; j++) {
         new_x = enemy_width * j + row_x
         ships[row_number][j] = true
         Ship(new_x, row_y)
@@ -98,14 +100,13 @@ function how_many_ships_hit(){
     let laser_left = player_x + 43
     let laser_right = laser_left + 10
     for (let k = 2; k > -1; k--) {
-        for (let j = 0; j < 7; j++) {
+        for (let j = 0; j < num_ships; j++) {
             ship_left = enemy_width * j + row[k].x
             ship_right = ship_left + tile_width
             if ((ship_left <= laser_right  & laser_right <= ship_right) || (ship_left <= laser_left & laser_left <= ship_right)) {
-                console.log('hit')
                 ships[k][j] = false
+                console.log('hit ship row ', k + 1, 'ship ', j + 1, 'value', ships[k][j])
                 ship_hit += 1
-                console.log('laser from ',laser_left, laser_right, 'ship from ', ship_left, ship_right, 'hits', ship_hit)
             }
         }
     }
