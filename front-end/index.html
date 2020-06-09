@@ -13,8 +13,12 @@
         </header>
         <main
             <div class="info">
-                <button onclick="start_game()"class="button">New Game</button>
-                <div class="info--score">0000</div>
+                <ul class="info__symbols">
+                    <li class="info__symbols--item">&#9786</li>
+                    <li class="info__symbols--item">&#9786</li>
+                    <li class="info__symbols--item">&#9786</li>
+                </ul>
+                <div id="score">0000</div>
                 <ul class="info__symbols">
                     <li class="info__symbols--item">&#9786</li>
                     <li class="info__symbols--item">&#9786</li>
@@ -24,9 +28,9 @@
             <canvas id="screen">
             </canvas>
             <nav class="buttons">
-                <button onclick="move_player_left()" class="button">left</button>
+                <button onclick="move_player_left()" class="button">LEFT</button>
                 <button onclick="shoot_laser()" class="button">SHOOT</button>
-                <button onclick="move_player_right()" class="button">right</button>
+                <button onclick="move_player_right()" class="button">RIGHT</button>
             </nav>
         </main>
         </div>
