@@ -1,5 +1,5 @@
 const canvas = document.getElementById('screen')
-canvas.width = 1900
+canvas.width = 1400
 canvas.height = 700
 const ctx = canvas.getContext('2d')
 const tile_width = 100
@@ -13,7 +13,7 @@ const max_right = canvas.width -  2 * tile_width
 const enemy_width = Math.floor(canvas.width / 9)
 const enemy_height = Math.floor(canvas.height / 5)
 const row_dx = 20
-const num_ships = 7
+const num_ships = 6
 const row_width = (num_ships - 1) * enemy_width
 
 let player_x = canvas.width / 2 - half_tile
