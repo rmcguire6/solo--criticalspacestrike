@@ -20,6 +20,7 @@ let player_x = canvas.width / 2 - half_tile
 let row = [{x:min_left, y: half_tile, direction: 1}, {x: 3 * tile_width, y: enemy_height + half_tile, direction: -1},{x: min_left + half_tile,y: 2 * enemy_height + half_tile ,direction: 1}]
 let ships = [[],[],[]]
 let score = 0
+let fuel = num_ships * 2
 
 function Ship (spacing_x, spacing_y) {
     ship_image = new Image()
@@ -125,14 +126,28 @@ function how_many_ships_hit(){
     }
     return ship_hit
 }
-
-function shoot_laser () {
+function clear_laser() {
     ctx.clearRect(player_x  + 43, 0, 10, player_y)
+}
+function draw_laser() {
+    clear_laser()
     ctx.fillStyle = '#ffff00'
     ctx.fillRect(player_x + 43, 0, 10, player_y)
-    let hits = how_many_ships_hit()
-    score = hits * 200 + score
+}
+function shoot_laser () {
+    let display_fuel
+    if (fuel > 0) {
+        draw_laser()
+        let hits = how_many_ships_hit()
+        score = hits * 200 + score
+        fuel -= 1
+        display_fuel = fuel
+    } else {
+        clear_laser()
+        display_fuel = 'GAME OVER'
+    }
     document.getElementById('score').innerHTML = score
+    document.getElementById('fuel').innerHTML = display_fuel
 }
 
 window.addEventListener('load', (event) => {
