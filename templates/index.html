@@ -4,14 +4,14 @@
         <meta charset="utf-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <title>Critical Space Strike</title>
-        <link rel="stylesheet" href="styles.css">
+        <link rel="stylesheet" href="../static/styles.css">
     </head>
     <body>
         <div class="container">
         <header class="title">
             <h1>Critical Space Strike</h1>
         </header>
-        <main
+        <main>
             <div class="info">
                 <button onclick="start_game" class="button">NEW GAME</button>
                 <div id="score">0000</div>
@@ -20,13 +20,13 @@
             </div> 
             <canvas id="screen">
             </canvas>
-            <nav class="buttons">
+            <div class="buttons">
                 <button onclick="move_player_left()" class="button">LEFT</button>
                 <button onclick="shoot_laser()" class="button">SHOOT</button>
                 <button onclick="move_player_right()" class="button">RIGHT</button>
-            </nav>
+            </div>
         </main>
         </div>
-        <script src="scripts.js"></script>
+        <script src="../static/scripts.js"></script>
     </body>
 </html>

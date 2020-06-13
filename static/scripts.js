@@ -24,7 +24,7 @@ let fuel = num_ships * 2
 
 function Ship (spacing_x, spacing_y) {
     ship_image = new Image()
-    ship_image.src = 'images/spaceship.png'
+    ship_image.src = '../static/images/spaceship.png'
     ship_image.onload = () => {
         ctx.drawImage(ship_image, spacing_x, spacing_y, tile_width, tile_height);
     }
@@ -35,7 +35,6 @@ function initialize_enemies(){
         for (let j = 0; j < num_ships; j++) {
             new_x = enemy_width * j + row[i].x
             ships[i][j] = true
-            console.log('initial ', ships[i][j])
             Ship(new_x, row[i].y)
         }
     }
@@ -52,7 +51,7 @@ function draw_row(row_x, row_y, row_number){
 
 function draw_player(x){
     player = new Image()
-    player.src = 'images/rocket.png'
+    player.src = '../static/images/rocket.png'
     player.onload = () => {
         ctx.drawImage(player, x, player_y, tile_width, tile_height)
     }
