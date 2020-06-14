@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, request, render_template
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import Column, Integer
 from flask_marshmallow import Marshmallow
@@ -39,8 +39,8 @@ def db_seed():
 
 
 @app.route('/')
-def hello_players():
-    return jsonify(message='Hello Players'),200
+def play_game():
+    return render_template('index.html'),200
 
 
 @app.route('/scores', methods=['GET'])
