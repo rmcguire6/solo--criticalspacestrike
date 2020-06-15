@@ -42,28 +42,20 @@ def db_seed():
 def play_game():
     return render_template('index.html'),200
 
-
-@app.route('/scores', methods=['GET'])
-def scores():
-    scores_list = Score.query.all()
-    result = scores_schema.dump(scores_list)
-    return jsonify(result)
-
-
-@app.route('/add_score', methods=['POST'])
-def add_score():
-    score = request.form['score']
-    if score:
-        new_score = Score(score=score)
-        db.session.add(new_score)
+@app.route('/scores')
+@app.route('/scores/<int:new_score>', methods=['GET','PUT'])
+def scores(new_score=None):
+    if new_score:
+        add_score = Score(score=new_score)
+        db.session.add(add_score)
         db.session.commit()
-        return jsonify(message='Score added to database'), 201
-    else:
-        return jsonify(message='Error adding score'), 400
-
+    scores_list = Score.query.all()
+    scores = scores_schema.dump(scores_list)
+    for score in scores:
+        print(score)
+    return render_template('scores.html', scores=scores, new_score=new_score)
 
 # database models
-
 
 class Score(db.Model):
     __tablename__ = 'scores'

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang-"en">
+    <head>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <title>Critical Space Strike</title>
+        <link rel="stylesheet" href='../static/styles.css'>
+        <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico')}}">
+    </head>
+    <body>
+        <div class="container">
+        <header class="title">
+            <h1>Critical Space Strike</h1>
+        </header>
+        <main>
+            <h1>High Scores</h1>
+            {% if scores %}
+            <ul>
+            {% for score in scores %}
+                <h1>{{score.score}}</h1>
+            {% endfor %}
+            </ul>
+            {% endif %}
+            {% if new_score %}
+                <div class="new_score"></div>
+                <h1>Your Score</h1>
+                <h1>{{new_score}}</h1>
+            {% endif %}
+        </main>
+        </div>}
+    </body>
+</html>
