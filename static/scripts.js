@@ -58,10 +58,9 @@ function draw_player(x){
 }
 
 function start_game () {
-    console.log('game started')
     draw_player(player_x)
     initialize_enemies()
-    animate_enemy()
+    move_enemies()
 }
 
 function move_enemies () {
@@ -83,10 +82,6 @@ function move_enemies () {
         }
         draw_row(row[i].x, row[i].y, i)
     }
-}
-
-function animate_enemy() {
-    setInterval(move_enemies,150)
 }
 
 function move_player_right () {
@@ -151,5 +146,6 @@ function shoot_laser () {
 
 window.addEventListener('load', (event) => {
     start_game()
+    let interval = setInterval(move_enemies, 150)
 })
 
