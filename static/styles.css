@@ -35,7 +35,6 @@ a {
     display: flex;
     flex-direction: column;
 }
-
 #fuel{
     font-size: 2em;
     margin-bottom: .25em;
@@ -44,6 +43,18 @@ a {
     display: flex;
     align-items: flex-start;
     justify-content: center;
+}
+#new_score{
+    width: 3em;
+    font-size: 1.2em;
+    margin: .5em;
+}
+#player_name {
+    font-size: 1.2em;
+    margin: .5em;
+}
+.new_score--title {
+    font-size: 1.5em;
 }
 #score {
     font-size: 2.5em;
@@ -59,13 +70,11 @@ a {
     font-size: 1.5em;
     padding: .5em 1em;
 }
-
 .scores--title {
     padding: .25em 0;
     font-size: 2em;
     font-weight: bold;
 }
-
 #screen {
     display: block;
     margin-right: auto;

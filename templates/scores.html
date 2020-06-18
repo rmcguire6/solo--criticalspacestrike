@@ -21,9 +21,15 @@
             {% endfor %}
             </ul>
             {% endif %}
-                <div>
-                <a href="/" class="button">START NEW GAME</a>
-            </div>
+            <form onsubmit="updateScores">
+                <h2>YOUR SCORE</h2>
+                <label class='new_score--title'>Player Name</label>
+                <input type='text' id="player_name"><br>
+                <label class='new_score--title'>Score</label>
+                <input type='text' id="new_score" ><br>
+                <button class='button'>Submit Your Score</button>
+            </form>
+            <a href="/" class="button">START NEW GAME</a>
         </main>
         </div>
     </body>
