@@ -15,6 +15,7 @@ a {
 }
 .button {
     color: #fff;
+    font-family: 'Times New Roman', Times, serif;
     font-size: 1.5em;
     font-weight: bold;
     background-color: rgba(66, 78, 176, .3);
@@ -34,8 +35,8 @@ a {
     display: flex;
     flex-direction: column;
 }
-#fuel,
-#new_score {
+
+#fuel{
     font-size: 2em;
     margin-bottom: .25em;
 }
@@ -49,6 +50,22 @@ a {
     margin-top: .25em;
     padding: 0 .5em;
 }
+.scores_list {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.scores_list--item {
+    font-size: 1.5em;
+    padding: .5em 1em;
+}
+
+.scores--title {
+    padding: .25em 0;
+    font-size: 2em;
+    font-weight: bold;
+}
+
 #screen {
     display: block;
     margin-right: auto;

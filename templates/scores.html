@@ -13,20 +13,17 @@
             <h1>Critical Space Strike</h1>
         </header>
         <main>
-            <h1>High Scores</h1>
+            <h2 class="scores--title">High Scores</h2>
             {% if scores %}
-            <ul>
+            <ul >
             {% for score in scores %}
-                <h1>{{score.score}}</h1>
+                <li class="scores_list" ><p class="scores_list--item">{{score.player}}</p><p class="scores_list--item">{{score.score}}</p></li>
             {% endfor %}
             </ul>
             {% endif %}
-            {% if new_score %}
-                <div class="new_score"></div>
-                <h1>Your Score</h1>
-                <h1>{{new_score}}</h1>
-            {% endif %}
-            <div><a href="/" class="button">START NEW GAME</a></div>
+                <div>
+                <a href="/" class="button">START NEW GAME</a>
+            </div>
         </main>
         </div>
     </body>
