@@ -17,7 +17,7 @@
             {% if scores %}
             <ul >
             {% for score in scores %}
-                <li class="scores_list" ><p class="scores_list--item">{{score.player}}</p><p class="scores_list--item">{{score.score}}</p></li>
+                <li class="scores_list" ><p class="scores_list--item">{{score[1]}}</p><p class="scores_list--item">{{score[0]}}</p></li>
             {% endfor %}
             </ul>
             {% endif %}
@@ -26,7 +26,7 @@
                 <label class='new_score--title'>Player Name</label>
                 <input name="player" type='text' id="player_name"><br>
                 <label class='new_score--title'>Score</label>
-                <input name="new_score" type='text' id="new_score" ><br>
+                <input name="new_score" required type='text' id="new_score" ><br>
                 <button class='button'>Submit Your Score</button>
             </form>
             <a href="/" class="button">START NEW GAME</a>
