@@ -21,12 +21,12 @@
             {% endfor %}
             </ul>
             {% endif %}
-            <form onsubmit="updateScores">
+            <form action="/scores" method="post">
                 <h2>YOUR SCORE</h2>
                 <label class='new_score--title'>Player Name</label>
-                <input type='text' id="player_name"><br>
+                <input name="player" type='text' id="player_name"><br>
                 <label class='new_score--title'>Score</label>
-                <input type='text' id="new_score" ><br>
+                <input name="new_score" type='text' id="new_score" ><br>
                 <button class='button'>Submit Your Score</button>
             </form>
             <a href="/" class="button">START NEW GAME</a>
@@ -34,3 +34,4 @@
         </div>
     </body>
 </html>
+"

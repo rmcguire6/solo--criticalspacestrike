@@ -20,8 +20,14 @@ def create_tables():
 def play_game():
     return render_template('index.html'),200
 
-@app.route('/scores')
+@app.route('/scores', methods=['POST','GET'])
 def scores(new_score=None):
+    if request.method == 'POST':
+        new_score = request.form['new_score']
+        player = request.form['player']
+        score = Score(score=new_score, player=player)
+        db.session.add(score)
+        db.session.commit()
     scores_list = Score.query.all()
     scores = scores_schema.dump(scores_list)
     return render_template('scores.html', scores=scores, new_score=new_score)
