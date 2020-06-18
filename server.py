@@ -1,6 +1,6 @@
 from flask import Flask, jsonify, request, render_template
 from flask_sqlalchemy import SQLAlchemy
-from sqlalchemy import Column, Integer
+from sqlalchemy import Column, Integer, String
 from flask_marshmallow import Marshmallow
 import os
 
@@ -21,16 +21,9 @@ def play_game():
     return render_template('index.html'),200
 
 @app.route('/scores')
-@app.route('/scores/<int:new_score>', methods=['GET','PUT'])
 def scores(new_score=None):
-    if new_score:
-        add_score = Score(score=new_score)
-        db.session.add(add_score)
-        db.session.commit()
     scores_list = Score.query.all()
     scores = scores_schema.dump(scores_list)
-    for score in scores:
-        print(score)
     return render_template('scores.html', scores=scores, new_score=new_score)
 
 # database models
@@ -38,17 +31,17 @@ def scores(new_score=None):
 class Score(db.Model):
     __tablename__ = 'scores'
     id = Column(Integer, primary_key=True)
-    score = Column(Integer)
+    player = Column(String, default="")
+    score = Column(Integer, nullable=False)
 
 
 class ScoreSchema(ma.Schema):
     class Meta:
-        fields = ('id', 'score')
+        fields = ('id', 'score', 'player')
 
 
 score_schema = ScoreSchema()
 scores_schema = ScoreSchema(many=True)
-
 
 if __name__ == '__main__':
     app.run()
