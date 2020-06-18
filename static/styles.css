@@ -35,7 +35,8 @@ a {
     display: flex;
     flex-direction: column;
 }
-#fuel{
+#fuel,
+#high_score {
     font-size: 2em;
     margin-bottom: .25em;
 }
