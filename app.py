@@ -37,7 +37,7 @@ def scores():
     scores = scores_schema.dump(scores)
     new_list = []
     for score in scores:
-        element =(score['score'], score['player'], score[id])
+        element =(score['score'], score['player'], score['id'])
         new_list.append(element)
     display = sorted(new_list, key=itemgetter(0),reverse=True)
     display = display[0:5]
