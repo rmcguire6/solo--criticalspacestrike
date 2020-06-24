@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang-"en">
+    <head>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <title>Critical Space Strike</title>
+        <link rel="stylesheet" href='static/styles.css'>
+        <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico')}}">
+    </head>
+    <body onload="draw()">
+        <div class="container">
+        <header class="title">
+            <h1>Critical Space Strike</h1>
+        </header>
+        <main>
+            <div class="info">
+                <div>
+                    <div class="button">FUEL LEFT</div>
+                    <div id="fuel">12</div>
+                </div>
+                <a href="/" class="button">NEW GAME</a>
+                <div id="score">0000</div>
+                <a href="/scores" class="button">SHOW SCORES</a>
+                <div>
+                    <div class="button">HIGH SCORE</div>
+                    <div id="high_score">3600</div>
+                </div>
+            </div>
+            <canvas id="screen">
+            </canvas>
+            <div class="buttons">
+                <button onclick="move_player_left()" class="button">LEFT</button>
+                <button onclick="shoot_laser()" class="button">SHOOT</button>
+                <button onclick="move_player_right()" class="button">RIGHT</button>
+            </div>
+        </main>
+        </div>
+        <script src="../static/scripts.js"></script>
+    </body>
+</html>

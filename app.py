@@ -1,16 +1,64 @@
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, request, render_template
 from flask_sqlalchemy import SQLAlchemy
-from sqlalchemy import Column, Integer
+from sqlalchemy import Column, Integer, String
 from flask_marshmallow import Marshmallow
+from operator import itemgetter
 import os
 
 app = Flask(__name__)
 basedir = os.path.abspath(os.path.dirname(__file__))
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(basedir, 'scores.db')
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)
 ma = Marshmallow(app)
 
+@app.before_first_request
+def create_tables():
+    db.create_all()
+
+@app.route('/')
+def play_game():
+    return render_template('index.html'),200
+
+@app.route('/scores', methods=['POST','GET'])
+def scores():
+    new_score = None
+    player =  ''
+    if request.method == 'POST':
+        new_score = request.form['new_score']
+        player = request.form['player']
+        if player == '':
+            player = 'Player'
+        score = Score(score=new_score, player=player)
+        db.session.add(score)
+        db.session.commit()
+    scores = Score.query.all()
+    scores = scores_schema.dump(scores)
+    new_list = []
+    for score in scores:
+        element =(score['score'], score['player'], score['id'])
+        new_list.append(element)
+    display = sorted(new_list, key=itemgetter(0),reverse=True)
+    display = display[0:5]
+    return render_template('scores.html', scores=display)
+
+# database models
+
+class Score(db.Model):
+    __tablename__ = 'scores'
+    id = Column(Integer, primary_key=True)
+    player = Column(String, default="")
+    score = Column(Integer, nullable=False)
+
+
+class ScoreSchema(ma.Schema):
+    class Meta:
+        fields = ('id', 'score', 'player')
+
+
+score_schema = ScoreSchema()
+scores_schema = ScoreSchema(many=True)
 
 @app.cli.command('db_create')
 def db_create():
@@ -21,63 +69,18 @@ def db_create():
 @app.cli.command('db_drop')
 def db_drop():
     db.drop_all()
-    print('Database dropped!')
+    print('Database dropped')
 
-@app.cli.command('db_test_seed')
+@app.cli.command('db_seed')
 def db_seed():
-    score1 = Score(score='435')
-    score2 = Score(score='87')
-    score3 = Score(score='47')
-    score4 = Score(score='000')
-
+    score1 = Score(player='Player 1', score=3600)
+    score2 = Score(player='Player 2', score=1200)
+    score3 = Score(player='Player 3', score=1600)
     db.session.add(score1)
     db.session.add(score2)
     db.session.add(score3)
-    db.session.add(score4)
     db.session.commit()
-    print('Database seeded!')
-
-
-@app.route('/')
-def hello_players():
-    return jsonify(message='Hello Players'),200
-
-
-@app.route('/scores', methods=['GET'])
-def scores():
-    scores_list = Score.query.all()
-    result = scores_schema.dump(scores_list)
-    return jsonify(result)
-
-
-@app.route('/add_score', methods=['POST'])
-def add_score():
-    score = request.form['score']
-    if score:
-        new_score = Score(score=score)
-        db.session.add(new_score)
-        db.session.commit()
-        return jsonify(message='Score added to database'), 201
-    else:
-        return jsonify(message='Error adding score'), 400
-
-
-# database models
-
-
-class Score(db.Model):
-    __tablename__ = 'scores'
-    id = Column(Integer, primary_key=True)
-    score = Column(Integer)
-
-
-class ScoreSchema(ma.Schema):
-    class Meta:
-        fields = ('id', 'score')
-
-
-score_schema = ScoreSchema()
-scores_schema = ScoreSchema(many=True)
+    print('Database seeded')
 
 
 if __name__ == '__main__':
