@@ -8,10 +8,18 @@ body {
     background-size: cover;
     background-repeat: no-repeat;
     width: 100%;
-    height: 100%;
+    height: 100vh;
 }
 a {
     text-decoration: none;
+}
+main{
+  color: #fff;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  height: 90vh;
+
 }
 .button {
     color: #fff;
@@ -34,20 +42,19 @@ a {
     text-align: center;
     display: flex;
     flex-direction: column;
-    height: 100vh;
-    background-image: url('./images/jeremy-thomas-4dpAqfTbvKA-unsplash.jpg');
-    background-size: cover;
-    background-repeat: no-repeat;
 }
 #fuel,
 #high_score {
     font-size: 2em;
     margin-bottom: .25em;
+    text-shadow: 1px 1px purple, -1px -1px black;
+    text-align: center;
 }
 .info {
     display: flex;
     align-items: flex-start;
     justify-content: center;
+    background: rgba(121, 99, 117, 0.48);
 }
 #new_score{
     width: 3em;
@@ -86,8 +93,40 @@ a {
     margin-left: auto;
     border: 2px solid #fff;
     margin: 0 auto;
+    width: 90%;
+    background: linear-gradient(45deg, black, transparent, black);
+
 }
 .title {
-    padding: .5em 0;
-    font-size: 1.5em;
+    text-align: center;
+    font-size: 1.25em;
+    background: rgba(121, 99, 117, 0.48);
+    text-shadow: 2px -2px black, -1px 1px black;
+}
+
+
+@media screen and (max-width: 799px) and (min-width: 220px){
+    main {
+        width: 100%;
+        height: 70%;
+          }
+    .title {
+      font-size: 0.9em;
+    }
+    #screen {
+      height: 90%;
+      width: 100%;
+    }
+    .button {
+      font-size: 0.7em;
+      padding: 0;
+    }
+    #score {
+      font-size: 1.5em;
+      margin: 0;
+      padding: 0;
+    }
+
+
+
 }

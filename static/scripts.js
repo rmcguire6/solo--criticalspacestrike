@@ -1,6 +1,8 @@
 const canvas = document.getElementById('screen')
+
 canvas.width = 1400
 canvas.height = 700
+
 const ctx = canvas.getContext('2d')
 const tile_width = 100
 const tile_height = 100
@@ -148,4 +150,3 @@ window.addEventListener('load', (event) => {
     start_game()
     let interval = setInterval(move_enemies, 150)
 })
-
