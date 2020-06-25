@@ -13,7 +13,7 @@
             <h1>Critical Space Strike</h1>
         </header>
         <main>
-            <h2 class="scores--title">High Scores</h2>
+            <h1 class="scores--title">High Scores</h1>
             {% if scores %}
             <ul >
             {% for score in scores %}
@@ -22,14 +22,16 @@
             </ul>
             {% endif %}
             <form action="/scores" method="post">
-                <h2>YOUR SCORE</h2>
-                <label class='new_score--title'>Player Name</label>
+                <h2 class="scores--title">YOUR SCORE</h2>
+                <label class='new_score--title title'>Player Name</label>
                 <input name="player" type='text' id="player_name"><br>
-                <label class='new_score--title'>Score</label>
+                <label class='new_score--title title'>Score</label>
                 <input name="new_score" required type='text' id="new_score" ><br>
-                <button class='button'>Submit Your Score</button>
+                <button class='button button--scores title'>Submit Your Score</button>
             </form>
-            <a href="/" class="button">START NEW GAME</a>
+            <div class="buttons">
+            <a href="/" class="button button--scores title ">START NEW GAME</a>
+            </div>
         </main>
         </div>
     </body>
