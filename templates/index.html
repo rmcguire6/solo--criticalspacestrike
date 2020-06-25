@@ -7,21 +7,21 @@
         <link rel="stylesheet" href='static/styles.css'>
         <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico')}}">
     </head>
-    <body onload="draw()">
+    <body >
         <div class="container">
         <header class="title">
             <h1>Critical Space Strike</h1>
         </header>
         <div class="info">
             <div>
-                <div class="button">FUEL LEFT</div>
+                <div class="button title">FUEL LEFT</div>
                 <div id="fuel">12</div>
             </div>
-            <a href="/" class="button">NEW GAME</a>
+            <a href="/" class="button title">NEW GAME</a>
             <div id="score">0000</div>
-            <a href="/scores" class="button">SHOW SCORES</a>
+            <a href="/scores" class=" button title">SHOW SCORES</a>
             <div>
-                <div class="button">HIGH SCORE</div>
+                <div class="button title">HIGH SCORE</div>
                 <div id="high_score">3600</div>
             </div>
         </div>
@@ -31,9 +31,9 @@
             <canvas id="screen">
             </canvas>
             <div class="buttons">
-                <button onclick="move_player_left()" class="button">LEFT</button>
-                <button onclick="shoot_laser()" class="button">SHOOT</button>
-                <button onclick="move_player_right()" class="button">RIGHT</button>
+                <button onclick="move_player_left()" class="button title">LEFT</button>
+                <button onclick="shoot_laser()" class="button title">SHOOT</button>
+                <button onclick="move_player_right()" class="button title">RIGHT</button>
             </div>
         </main>
         </div>
